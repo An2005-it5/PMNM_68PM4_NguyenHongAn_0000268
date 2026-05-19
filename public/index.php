@@ -1,6 +1,6 @@
 <?php
-   require_once '../app/core/app.php';
-   $app = new app();
-   
-   
+require_once '../app/midleware.php';
+$middleware = new midleware();
+$middleware->checkLogin();
+$app = new app();
 ?>

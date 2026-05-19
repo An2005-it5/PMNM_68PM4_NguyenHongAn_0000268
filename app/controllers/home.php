@@ -6,4 +6,7 @@ class Home {
     public function create() {
         echo 'Đây là trang tạo mới';
     }
+    public function login() {
+        require_once '../app/views/home/login.php';
+    }
 }
