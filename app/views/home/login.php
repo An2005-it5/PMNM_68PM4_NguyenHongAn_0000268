@@ -1,39 +1,48 @@
+<?php $baseUrl = str_replace('index.php', '', $_SERVER['SCRIPT_NAME']); ?>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng nhập</title>
-    <link rel="stylesheet" href="/QLSV.php/public/css/login.css">
+    <link rel="stylesheet" href="<?php echo $baseUrl; ?>css/login.css">
 </head>
 <body>
-  <div class="login-wrapper">
-    <div class="login-card">
-      <h1>Đăng nhập</h1>
-      <p class="lead">Vui lòng nhập tài khoản và mật khẩu của bạn</p>
+    <main class="login-page">
+        <section class="login-visual">
+            <img src="<?php echo $baseUrl; ?>images/login.jpg" alt="Hệ thống quản lý sinh viên">
+            <div class="visual-copy">
+                <span>HUCE</span>
+                <h1>Quản lý sinh viên</h1>
+                <p>Database: 68PM34</p>
+            </div>
+        </section>
 
-      <?php if (!empty($error)): ?>
-        <div class="error"><?php echo htmlspecialchars($error); ?></div>
-      <?php endif; ?>
+        <section class="login-panel">
+            <div class="login-card">
+                <img class="login-logo" src="<?php echo $baseUrl; ?>images/logo.jpg" alt="Logo">
+                <h2>Đăng nhập</h2>
+                <p class="lead">Nhập tài khoản để vào hệ thống.</p>
 
-      <form method="post" action="?url=auth/login" autocomplete="on">
-        <div class="form-group">
-          <label for="username">Tài khoản</label>
-          <input type="text" id="username" name="username" required autofocus>
-        </div>
+                <?php if (!empty($error)): ?>
+                    <div class="error"><?php echo htmlspecialchars($error); ?></div>
+                <?php endif; ?>
 
-        <div class="form-group">
-          <label for="password">Mật khẩu</label>
-          <input type="password" id="password" name="password" required>
-        </div>
+                <form method="post" action="<?php echo $baseUrl; ?>auth/login" autocomplete="on">
+                    <div class="form-group">
+                        <label for="username">Tài khoản</label>
+                        <input type="text" id="username" name="username" required autofocus placeholder="nguyenhongan">
+                    </div>
 
-        <button class="btn" type="submit">Đăng nhập</button>
-      </form>
+                    <div class="form-group">
+                        <label for="password">Mật khẩu</label>
+                        <input type="password" id="password" name="password" required placeholder="0000268">
+                    </div>
 
-      <div class="login-footer">
-        <p>Không có tài khoản? <a href="?url=home/register">Đăng ký</a></p>
-      </div>
-    </div>
-  </div>
+                    <button class="btn" type="submit">Đăng nhập</button>
+                </form>
+            </div>
+        </section>
+    </main>
 </body>
 </html>

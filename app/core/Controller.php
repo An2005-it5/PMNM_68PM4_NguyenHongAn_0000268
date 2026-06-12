@@ -1,14 +1,13 @@
 <?php
-//controller cơ sở để các controller khác kế thừa
-Class controller{
-    //kết nối model
+class Controller{
     public function model($model){
-        require_once __DIR__ . '/../models/' . $model . '.php';
-        return new $model;
+        require_once '../app/models/'.$model.'.php';
+        return new $model();
     }
-    //kết nối view
-    public function view($viewname, $data = []) {
+
+    public function view($viewName, $data = []){
         extract($data);
-        require_once __DIR__ . '/../views/' . $viewname . '.php';
+        require_once '../app/views/'.$viewName.'.php';
     }
 }
+?>

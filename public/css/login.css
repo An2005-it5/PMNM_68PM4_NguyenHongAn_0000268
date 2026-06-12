@@ -1,131 +1,167 @@
-
-
-/* 1. Reset toàn bộ (bỏ margin/padding mặc định) */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* 2. Nền trang */
 body {
-  background-color: #f0f2f5;
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  color: #333;
+  min-height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #111827;
+  background: #f3f4f6;
 }
 
-/* 3. Căn giữa form */
-.login-wrapper {
+.login-page {
   min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr);
+}
+
+.login-visual {
+  position: relative;
+  overflow: hidden;
+  background: #111827;
+}
+
+.login-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.72;
+}
+
+.visual-copy {
+  position: absolute;
+  left: 44px;
+  bottom: 44px;
+  color: #fff;
+}
+
+.visual-copy span {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.16);
+  font-weight: 700;
+}
+
+.visual-copy h1 {
+  font-size: 42px;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.visual-copy p {
+  color: #d1d5db;
+  font-size: 16px;
+}
+
+.login-panel {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 32px;
 }
 
-/* 4. Thẻ form (card) */
 .login-card {
-  background-color: white;
   width: 100%;
-  max-width: 400px;
-  padding: 30px;
+  max-width: 420px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+  padding: 32px;
 }
 
-/* 5. Tiêu đề */
-.login-card h1 {
-  text-align: center;
-  color: #2c3e50;
-  margin-bottom: 10px;
+.login-logo {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 18px;
+}
+
+.login-card h2 {
   font-size: 28px;
+  margin-bottom: 8px;
 }
 
-/* 6. Mô tả */
-.login-card p.lead {
-  text-align: center;
-  color: #7f8c8d;
-  margin-bottom: 20px;
-  font-size: 14px;
+.lead {
+  color: #6b7280;
+  margin-bottom: 22px;
 }
 
-/* 7. Nhóm input */
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 16px;
 }
 
-/* 8. Label */
 label {
   display: block;
-  margin-bottom: 5px;
-  color: #34495e;
-  font-weight: bold;
+  margin-bottom: 7px;
+  color: #374151;
+  font-weight: 700;
   font-size: 14px;
 }
 
-/* 9. Input (tài khoản & mật khẩu) */
 input[type="text"],
 input[type="password"] {
   width: 100%;
-  padding: 10px 12px;
-  border: 1px solid #bdc3c7;
-  border-radius: 4px;
+  padding: 12px 13px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
   font-size: 15px;
-  font-family: Arial, sans-serif;
+  font-family: inherit;
 }
 
-/* 10. Input khi focus (click vào) */
-input[type="text"]:focus,
-input[type="password"]:focus {
+input:focus {
   outline: none;
-  border-color: #3498db;
-  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.16);
 }
 
-/* 11. Nút đăng nhập */
 .btn {
   width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  background-color: #3498db;
-  color: white;
+  padding: 12px 14px;
+  margin-top: 6px;
+  background: #2563eb;
+  color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 800;
   cursor: pointer;
 }
 
-/* 12. Nút khi hover (di chuột lên) */
 .btn:hover {
-  background-color: #2980b9;
+  background: #1d4ed8;
 }
 
-/* 13. Thông báo lỗi */
 .error {
-  background-color: #fee;
-  color: #c33;
-  padding: 10px;
-  border-radius: 4px;
-  border: 1px solid #fcc;
-  margin-bottom: 15px;
+  background: #fef2f2;
+  color: #991b1b;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #fecaca;
+  margin-bottom: 16px;
   font-size: 14px;
 }
 
-/* 14. Footer nhỏ */
-.login-footer {
-  text-align: center;
-  margin-top: 15px;
-  font-size: 14px;
-  color: #7f8c8d;
-}
+@media (max-width: 820px) {
+  .login-page {
+    grid-template-columns: 1fr;
+  }
 
-.login-footer a {
-  color: #3498db;
-  text-decoration: none;
-}
+  .login-visual {
+    min-height: 240px;
+  }
 
-.login-footer a:hover {
-  text-decoration: underline;
+  .visual-copy {
+    left: 24px;
+    bottom: 24px;
+  }
+
+  .visual-copy h1 {
+    font-size: 30px;
+  }
 }

@@ -7,7 +7,7 @@ class App
 
     public function __construct()
     {
-        // if (isset($_GET['url'])) {
+        require_once '../app/core/Controller.php';
         //     echo($_GET['url']);
         // }
         $urlProcessed = $this->UrlProcess();  //mảng url đã được xử lý
@@ -33,6 +33,7 @@ class App
         if (isset($_GET['url'])) {
             return explode('/', filter_var(trim($_GET['url'], '/')));
         }
+        return [];
     }
 }
 

@@ -1,31 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thêm sinh viên mới</title>
-</head>
-<body>
-    <h1>Thêm sinh viên mới</h1>
-    <?php $baseUrl = str_replace('index.php', '', $_SERVER['SCRIPT_NAME']); ?>
-    <form action="<?php echo $baseUrl; ?>sinhvien/store" method="post">
-        <div>
-            <label for="ID">ID:</label>
-            <input type="text" id="ID" name="ID" required>
+<?php $baseUrl = str_replace('index.php', '', $_SERVER['SCRIPT_NAME']); ?>
+<div style="max-width:640px;margin:32px auto;padding:22px;background:#fff;border-radius:8px;box-shadow:0 18px 40px rgba(15,23,42,0.08);border:1px solid #e5e7eb;">
+    <h1 style="font-size:2rem;margin-bottom:8px;color:#111827;">Thêm sinh viên</h1>
+    <form action="<?php echo $baseUrl; ?>sinhvien/store" method="post" style="display:grid;gap:18px;">
+        <label>
+            <span style="display:block;margin-bottom:8px;font-weight:600;color:#374151;">MSSV</span>
+            <input type="text" name="mssv" required style="width:100%;padding:12px;border:1px solid #d1d5db;border-radius:8px;">
+        </label>
+        <label>
+            <span style="display:block;margin-bottom:8px;font-weight:600;color:#374151;">Họ và tên</span>
+            <input type="text" name="hoten" required style="width:100%;padding:12px;border:1px solid #d1d5db;border-radius:8px;">
+        </label>
+        <label>
+            <span style="display:block;margin-bottom:8px;font-weight:600;color:#374151;">Giới tính</span>
+            <select name="gioitinh" required style="width:100%;padding:12px;border:1px solid #d1d5db;border-radius:8px;background:#fff;">
+                <option value="">Chọn giới tính</option>
+                <option value="Nam">Nam</option>
+                <option value="Nữ">Nữ</option>
+            </select>
+        </label>
+        <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+            <a href="<?php echo $baseUrl; ?>sinhvien/index" style="display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:8px;border:1px solid #d1d5db;color:#374151;text-decoration:none;">Quay về</a>
+            <button type="submit" style="display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:8px;border:none;background:#2563eb;color:#fff;font-weight:700;">Lưu</button>
         </div>
-        <div>
-            <label for="MSSV">MSSV:</label>
-            <input type="text" id="MSSV" name="MSSV" required>
-        </div>
-        <div>
-            <label for="HoTen">Họ Tên:</label>
-            <input type="text" id="HoTen" name="HoTen" required>
-        </div>
-        <div>
-            <label for="GioiTinh">Giới Tính:</label>
-            <input type="text" id="GioiTinh" name="GioiTinh" required>
-        </div>
-        <button type="submit">Lưu</button>
     </form>
-</body>
-</html>
+</div>

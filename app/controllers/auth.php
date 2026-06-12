@@ -1,31 +1,44 @@
 <?php
-     class auth {
-        protected $user =[
-            "nguyenhongan"=> "01666456375",
-            "admin"=> "1234567"
-        ];
-    
-         public function login() {
-            $baseUrl = str_replace('index.php', '', $_SERVER['SCRIPT_NAME']);
-            
-            // Xử lý đăng nhập
-            if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
-                // Lấy dữ liệu từ form đăng nhập
-                $username = $_POST['username'] ?? '';
-                $password = $_POST['password'] ?? '';
-    
-                if (isset($this->user[$username]) && $this->user[$username] === $password) {
-                    $_SESSION['username'] = $username;
-                    // Chuyển hướng đến trang chủ sau khi đăng nhập thành công
-                    header("Location: " . $baseUrl . "home/index");
-                    exit();
-                } 
-            }
-            
-            // Chuyển hướng đến trang đăng nhập nếu không phải là POST hoặc sai mật khẩu
-            header("Location: " . $baseUrl . "home/login");
+class auth
+{
+    protected $user = [
+        'nguyenhongan' => '0000268',
+        'admin' =>'12345678'    
+    ];
+
+    private function baseUrl()
+    {
+        return str_replace('index.php', '', $_SERVER['SCRIPT_NAME']);
+    }
+
+    public function login()
+    {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            header('Location: ' . $this->baseUrl() . 'home/login');
             exit();
-         }
-     }
+        }
 
+        $username = trim($_POST['username'] ?? '');
+        $password = trim($_POST['password'] ?? '');
 
+        if (isset($this->user[$username]) && $this->user[$username] === $password) {
+            $_SESSION['username'] = $username;
+            // Release session lock so concurrent asset requests aren't blocked
+            session_write_close();
+            header('Location: ' . $this->baseUrl() . 'home/index');
+            exit();
+        }
+
+        $_SESSION['error'] = 'Tài khoản hoặc mật khẩu không đúng.';
+        header('Location: ' . $this->baseUrl() . 'home/login');
+        exit();
+    }
+
+    public function logout()
+    {
+        session_destroy();
+        header('Location: ' . $this->baseUrl() . 'home/login');
+        exit();
+    }
+}
+?>
