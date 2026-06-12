@@ -104,5 +104,12 @@ class SinhvienModel
             'totalPage' => max(1, (int)ceil($totalRecord / $limit))
         ];
     }
+
+    public function delete($id)
+    {
+        $stmt = $this->conn->prepare("DELETE FROM sinhvien WHERE ID = :id");
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
 }
 ?>

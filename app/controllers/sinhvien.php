@@ -120,5 +120,13 @@ class sinhvien extends Controller
         $_SESSION[$result ? 'success' : 'error'] = $result ? 'Cập nhật sinh viên thành công!' : 'Cập nhật sinh viên thất bại!';
         $this->redirect('sinhvien/index');
     }
+
+    public function delete($id)
+    {
+        $sinhvienModel = $this->model('SinhvienModel');
+        $result = $sinhvienModel->delete(intval($id));
+        $_SESSION[$result ? 'success' : 'error'] = $result ? 'Xóa sinh viên thành công!' : 'Xóa sinh viên thất bại!';
+        $this->redirect('sinhvien/index');
+    }
 }
 ?>

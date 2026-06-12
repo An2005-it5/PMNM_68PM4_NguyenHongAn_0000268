@@ -79,6 +79,7 @@
                     <td style="padding:14px;"><?php echo htmlspecialchars($sv['GioiTinh']); ?></td>
                     <td style="padding:14px;">
                         <button type="button" class="editStudentBtn" data-id="<?php echo $sv['ID']; ?>" data-mssv="<?php echo htmlspecialchars($sv['MSSV']); ?>" data-hoten="<?php echo htmlspecialchars($sv['HoTen']); ?>" data-gioitinh="<?php echo htmlspecialchars($sv['GioiTinh']); ?>" style="padding:8px 12px;border:0;background:#10b981;color:#fff;cursor:pointer;">Sửa</button>
+                        <a href="<?php echo $baseUrl . 'sinhvien/delete/' . $sv['ID']; ?>" onclick="return confirm('Bạn có chắc muốn xóa sinh viên này?');" style="padding:8px 12px;border-radius:8px;background:#ef4444;color:#fff;text-decoration:none;">Xóa</a>
                     </td>
                 </tr>
             <?php endforeach; else: ?>
